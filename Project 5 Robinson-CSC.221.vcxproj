@@ -125,6 +125,10 @@
   <ItemGroup>
     <ClCompile Include="Student-Lineup.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Student Lineup Robinson\LineUp.txt" />
+    <Text Include="..\Student Lineup Robinson\output.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
