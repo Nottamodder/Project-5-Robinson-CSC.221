@@ -25,10 +25,37 @@ int main()
 	1920 ****
 	1940 *****
 	*/
-	std::ifstream inputFile("People.txt");
-	std::vector<std::string> lines;
-	std::string line;
-	while (std::getline(inputFile, line))
-		lines.push_back(line);
-	inputFile.close();
+	using namespace std;
+    std::string filename;
+    std::string townName;
+    std::ifstream inputFile;
+    int population;
+    int currentYear = 1900;
+    const int interval = 20;
+//Get the user inputs for file and town
+    std::cout << "Enter the name of the data file: ";
+    std::getline(std::cin, filename);
+    std::cout << "Enter the name of the town: ";
+    std::getline(std::cin, townName);
+//Open and verify
+    inputFile.open(filename);
+    if (!inputFile) {
+        std::cerr << "Error: Could not open file " << filename << std::endl;
+        return 1;
+    }
+//Display chart
+    std::cout << "\n" << townName << " POPULATION GROWTH" << std::endl;
+    std::cout << "(each * represents 1,000 people)" << std::endl;
+    while (inputFile >> population) {
+        std::cout << currentYear << " ";
+        for (int i = 0; i < population / 1000; ++i) {
+            std::cout << "*";
+        }
+        std::cout << std::endl;
+        currentYear += interval;
+    }
+
+    inputFile.close();
+
+    return 0;
 }
